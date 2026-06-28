@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Compressor — Shrink images in your browser</title>
+  <meta name="description" content="Free, private image compressor. Compress JPG, PNG, and WebP images directly in your browser. No uploads, no servers." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗜️</text></svg>" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>🗜️ Image Compressor</h1>
+    <p class="tagline">Shrink JPG, PNG &amp; WebP images right in your browser. Nothing is uploaded — your files never leave your device.</p>
+  </header>
+
+  <main>
+    <section id="dropzone" class="dropzone" aria-label="Drop images here">
+      <input type="file" id="fileInput" accept="image/*" multiple hidden />
+      <div class="dropzone-inner">
+        <div class="dropzone-icon">📁</div>
+        <p><strong>Drag &amp; drop images here</strong></p>
+        <p class="muted">or</p>
+        <button type="button" id="browseBtn" class="btn">Choose files</button>
+        <p class="muted small">JPG · PNG · WebP — multiple files supported</p>
+      </div>
+    </section>
+
+    <section class="controls" id="controls" hidden>
+      <div class="control">
+        <label for="quality">Quality: <span id="qualityValue">80</span>%</label>
+        <input type="range" id="quality" min="10" max="100" value="80" step="1" />
+      </div>
+
+      <div class="control">
+        <label for="format">Output format</label>
+        <select id="format">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+          <option value="image/png">PNG</option>
+        </select>
+      </div>
+
+      <div class="control">
+        <label for="maxWidth">Max width (px, 0 = keep)</label>
+        <input type="number" id="maxWidth" min="0" value="0" placeholder="0" />
+      </div>
+
+      <div class="control control-actions">
+        <button type="button" id="recompressBtn" class="btn">Re-compress all</button>
+        <button type="button" id="downloadAllBtn" class="btn btn-primary">Download all (.zip)</button>
+        <button type="button" id="clearBtn" class="btn btn-ghost">Clear</button>
+      </div>
+    </section>
+
+    <section id="results" class="results"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>100% client-side. Built with the Canvas API. <a href="https://github.com/joelt006/Image-compressor" target="_blank" rel="noopener">Source on GitHub</a></p>
+  </footer>
+
+  <!-- JSZip for "Download all" -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
